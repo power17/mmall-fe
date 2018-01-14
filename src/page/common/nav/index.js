@@ -2,7 +2,7 @@
 * @Author: ASUS
 * @Date:   2018-01-06 10:54:08
 * @Last Modified by:   ASUS
-* @Last Modified time: 2018-01-07 08:06:56
+* @Last Modified time: 2018-01-11 22:33:45
 */
 'use strict';
 require('./index.css');
@@ -24,7 +24,7 @@ var nav = {
         });
          //注册点击事件
         $('.js-register').click(function() {
-            window.location.href = './register.html';
+            window.location.href = './user-register.html';
         });
         // 退出点击事件
         $('.js-logout').click(function() {
@@ -38,8 +38,9 @@ var nav = {
     //加载用户信息
     loadUserInfo: function() {
         _user.checkLogin(function(res) {
-            $('.user.not-login').hide.siblings('.user.login').show()
+            $('.user.not-login').hide().siblings('.user.login').show()
                 .find('.username').text(res.username);
+                console.log(res);
         },function(errMsg) {
             //do nothing
         });

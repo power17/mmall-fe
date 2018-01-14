@@ -2,7 +2,7 @@
 * @Author: ASUS
 * @Date:   2018-01-07 11:34:12
 * @Last Modified by:   ASUS
-* @Last Modified time: 2018-01-08 21:24:13
+* @Last Modified time: 2018-01-14 12:00:02
 */
 
 'use strict';
@@ -15,9 +15,9 @@ var templateIndex = require('./index.string');
         name: '',
         navList : [
         {name : 'user-center',  desc : '个人中心',  href: './user-center.html'},
-        {name : 'order-list' ,  desc : '我的订单',  href: './user-center.html'},
-        {name : 'pass-update',  desc : '修改密码',  href: './user-center.html'},
-        {name : 'about'      ,  desc : '关于MMall', href: './user-center.html'}
+        {name : 'order-list' ,  desc : '我的订单',  href: './order-list.html'},
+        {name : 'user-pass-update',  desc : '修改密码',  href: './user-pass-update.html'},
+        {name : 'about'      ,  desc : '关于MMall', href: './about.html'}
         ]
     },
     init: function(option) {

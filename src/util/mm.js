@@ -2,7 +2,7 @@
 * @Author: ASUS
 * @Date:   2018-01-02 22:25:35
 * @Last Modified by:   ASUS
-* @Last Modified time: 2018-01-03 23:34:31
+* @Last Modified time: 2018-01-14 11:40:15
 */
 'user strict';
 var Hogan = require('hogan.js');
@@ -12,16 +12,17 @@ var conf = {
 //网络请求
 var _mm = {
     request: function(param) {
+        var _this = this;
         $.ajax({
             type     : param.method || 'get',
             url      : param.url    || '',
             dataType : param.type   || 'json',
             data     : param.data   || '',
             success  : function(res) {
-                var _this = this;
+                
                 //请求成功
                 if (0 === res.status) {
-                    typeof param.success === 'function'&& param.success(res);
+                    typeof param.success === 'function'&& param.success(res.data,res.msg);
                 //没有登录状态，需要强制登录
                 } else if(10 === res.status) {
                     _this.doLogin();
@@ -40,7 +41,7 @@ var _mm = {
     },
     //获取服务器地址
     getServerUrl: function(path) {
-        return conf.host + path;
+        return conf.serverHost + path;
     },
     //获取url参数
     getUrlParam: function(name) {
@@ -57,7 +58,7 @@ var _mm = {
     },
     //成功提示
     successTips: function(msg) {
-        alter(msg ||'操作成功');
+        alert(msg ||'操作成功');
     },
     errorTips: function(msg) {
         alert(msg || '哪里不对了~');
@@ -80,7 +81,7 @@ var _mm = {
     },
     //统一登录处理
     doLogin : function() {
-        window.location.href = './login.html?redirect=' + encodeURIComponent(window.location.href);
+        window.location.href = './user-login.html?redirect=' + encodeURIComponent(window.location.href);
     },
     goHome : function() {
         window.location.href = './index.html';
